@@ -100,22 +100,22 @@
     <div class="row">
 		  <div class="col-md-3">
 		  	<div class='customer_info'>
-			  	<p>Order ID: <?=$order['id'] ?></p>
+			  	<p>Order ID: <?=$order['order_id'] ?></p>
 			  	<div class='shipping_info'>
 			  		<p>Customer shipping info</p>
-			  		<p>Name: Bob </p>
-			  		<p>Address: 123 Dojo Way </p>
-			  		<p>City: Seattle </p>
-			  		<p>State: WA </p>
-			  		<p>zip: 98133 </p>
+			  		<p>Name: <?=$order['shipping_first_name']." ".$order['shipping_last_name'] ?> </p>
+			  		<p>Address: <?=$order['shipping_address1'].", ".$order['shipping_address2'] ?> </p>
+			  		<p>City: <?=$order['shipping_city'] ?> </p>
+			  		<p>State: <?=$order['shipping_state'] ?></p>
+			  		<p>zip: <?=$order['shipping_zip'] ?> </p>
 			  	</div>
 			  	<div class='billing_info'>
 			  		<p>Customer billing info</p>
-			  		<p>Name: Bob </p>
-			  		<p>Address: 123 Dojo Way </p>
-			  		<p>City: Seattle </p>
-			  		<p>State: WA </p>
-			  		<p>zip: 98133 </p>
+			  		<p>Name: <?=$order['first_name']." ".$order['last_name'] ?> </p>
+			  		<p>Address: <?=$order['address1'].", ".$order['address2'] ?> </p>
+			  		<p>City: <?=$order['city'] ?> </p>
+			  		<p>State: <?=$order['state'] ?></p>
+			  		<p>zip: <?=$order['zip'] ?> </p>
 			  	</div>
 		 	</div>
 		  </div>
@@ -131,31 +131,31 @@
 				 		</tr>
 				 	</thead>
 				 	<tbody>
-				 		<tr>
-				 			<td>35</td>
-							<td>cup</td>
-							<td>$9.99</td>
-							<td>1</td>
-							<td>$9.99</td>
+<?php
+					foreach($items as $item)
+					{
+?>
+						<tr>
+				 			<td><?=$item['order_id'] ?></td>
+							<td><?=$item['product_name'] ?></td>
+							<td><?=$item['product_price'] ?></td>
+							<td><?=$item['product_qty'] ?></td>
+							<td><?=$item['product_total'] ?></td>
 				 		</tr>
-				 		<tr>
-				 			<td>35</td>
-							<td>cup</td>
-							<td>$9.99</td>
-							<td>1</td>
-							<td>$9.99</td>
-				 		</tr>
+<?php
+					}
+?>				 		
 				 	</tbody>
 				</table>
 				<div class="row">
 				    <div class="col-xs-8 col-sm-6">
-				        <p class=' btn-success'>Status shipped</p>
+				        <p class=' btn-success'>Status: <?=$item['order_status'] ?></p>
 				    </div>
 				    <div class="col-xs-4 col-sm-6">
 				    	<div class='totals'>
-					         <p>Subtotal: $29.98</p>
-					         <p>Shipping: $1.00</p>
-					         <p>Total Price: $30.98</p>
+					         <p>Subtotal: <?=$order['subtotal'] ?></p>
+					         <p>Shipping: <?=$order['shipping'] ?></p>
+					         <p>Total Price: <?=$order['total_price'] ?></p>
 				     	</div>
 				    </div>
 				</div>
