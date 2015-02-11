@@ -14,6 +14,7 @@ class Customers extends CI_Controller {
 		$this->load->view('home');
 	}
 
+
 	public function product()
 	{
 		$this->load->view('product');
@@ -32,6 +33,7 @@ class Customers extends CI_Controller {
 			$this->Customer->add_to_cart($item);
 			$qty = $this->Customer->qty_in_cart($cart_id);
 			$this->session->set_userdata('cart_qty', $qty[0]['total_qty']);
+			redirect('/customers/product');
 		}
 		else 
 		{
@@ -45,6 +47,7 @@ class Customers extends CI_Controller {
 			$this->Customer->add_to_cart($item);
 			$qty = $this->Customer->qty_in_cart($cart_id);
 			$this->session->set_userdata('cart_qty', $qty[0]['total_qty']);
+			redirect('/customers/product');
 		}
 	}
 

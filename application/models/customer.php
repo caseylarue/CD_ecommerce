@@ -17,7 +17,7 @@ class Customer extends CI_model {
 
 	function display_cart($cart_id)
 	{
-		return $this->db->query("SELECT cart_products.cart_id,cart_products.product_id, products.description, products.price, SUM(cart_products.product_qty) as qty, SUM(cart_products.product_qty * products.price) as total
+		return $this->db->query("SELECT products.name, cart_products.cart_id,cart_products.product_id, products.description, products.price, SUM(cart_products.product_qty) as qty, SUM(cart_products.product_qty * products.price) as total
 		FROM cart_products
 		JOIN products ON cart_products.product_id = products.id
 		WHERE cart_products.cart_id=$cart_id

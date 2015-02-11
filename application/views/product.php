@@ -69,9 +69,9 @@
         <div class="col-md-4"></div>
         <div class="col-md-4"></div>
         <div class="col-md-4">
-          <form class="form-inline" action='build_cart' method='post'>
+          <form class="form-inline" action='/customers/build_cart' method='post'>
            <!--  we will input the product id via query here -->
-            <input type='hidden' name='product_id' value='1'> 
+            <input type='hidden' name='product_id' value='5'> 
               <select name='qty' class="form-control">
                   <option value='1'>1($19.99)</option>
                   <option value='2'>2($39.99)</option>

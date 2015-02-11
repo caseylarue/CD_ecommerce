@@ -70,7 +70,7 @@
       {
 ?>
         <tr>
-          <td><?=$item['description']?></td>
+          <td><?=$item['name']?></td>
           <td><?=$item['price']?></td>
           <td><?=$item['qty']?></td>
           <td><?=$item['total']?></td>
@@ -171,7 +171,18 @@
             <div class='col-md-4'><input type='text' name='billing_expiration' class='form-control' placeholder='XX / XX'></div>
           </div>
           <div class='form-group row'>
-            <div class='col-md-2'><button type='submit' class='form-control btn btn-primary'>Checkout</button></div>
+<?php   
+            if(!empty($cart_total['item_total']))
+            {
+?>
+                <div class='col-md-2'><button type='submit' class='form-control btn btn-primary'>Checkout</button></div>
+<?php       }
+            else
+            {
+?>
+                <p>You have nothing in your cart</p>
+<?php        }  
+?>          
           </div>
         </form>
       </div> <!-- /end of forms div -->
