@@ -55,7 +55,7 @@
 <?php 			foreach ($products as $product){ ?>
 		 		<tr>
 <?php             if (!empty($product['image_url'])){ ?>
-                      <td><img class='image' src='<?= BASE_URL.$product["image_url"] ?>' ></td>
+                      <td><img class='image' src='<?= $product["image_url"] ?>' ></td>
 <?php              }else{ ?>
                      <td>No Image</td>
 <?php             } ?>

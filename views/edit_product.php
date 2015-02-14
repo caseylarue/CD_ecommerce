@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Add/Edit Product</title>
+    <title>Edit Product</title>
 
       <!-- Bootstrap -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +30,9 @@
   	.image{
   		width: 20px;
   		height: 20px;
+  		background-image: url('../../assets/engineer.jpg');
+  		background-size: contain;
+  		background-repeat: no-repeat;
   	}
 
   	.button_row{
@@ -38,14 +41,6 @@
 
   </style>
  <?php var_dump($product) ?>
-
- <?php if(isset($product['image_urls']) && isset($product['main_pics']))
- 		{
- 			$images = explode(',', $product['image_urls']);
- 	   		$main_pic_checkbox = explode(',', $product['main_pics']);
- 	   	}
- ?>
-
   <body role="document">
    	<div class="container">
    		<div class="row">
@@ -61,7 +56,7 @@
 <?php   if ($product['function'] == 'add_new') {	?>
    			<form class="form-horizontal" action='<?= "/admins/insert_product" ?>' method='post' enctype='multipart/form-data'>  
 <?php   }else{ ?>
-			<form class="form-horizontal" action='<?= "/admins/update_product/".$product['id'] ?>' method='post' enctype='multipart/form-data'> 
+			<form class="form-horizontal" action='<?= "/admins/update_product" ?>' method='post' enctype='multipart/form-data'> 
 <?php   } ?>
 			  <div class="form-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
@@ -129,7 +124,7 @@
 					<div class="col-md-8">
 							<div class="row">
 						      <div class="col-xs-8 col-sm-2">
-						        <div class='image'><img class='image' src='<?= BASE_URL.$images[$i] ?>' ></div>
+						        <div class='image'></div>
 						      </div>
 						      <div class="col-xs-4 col-sm-5">
 <?php   if (($product['function'] == 'edit')  && (isset($product['images']))) {	?>
@@ -146,8 +141,8 @@
 						      <div class="col-xs-4 col-sm-3">
 						        	<div class="checkbox">
 									  <label>
-<?php   if (($product['function'] == 'edit') && (isset($main_pic_checkbox)) && ($main_pic_checkbox[$i] == '1'))	{ ?>								  	
-									    <input type="checkbox" name='<?= "main_pic[".$i."]" ?>' checked>
+<?php   if (($product['function'] == 'edit') && (isset($product['main_pic_flag'])) && ($product['main_pic_flags'][$i] == '1'))	{ ?>								  	
+									    <input type="checkbox" name='<?= "main_pic_".$i ?>' checked>
 <?php }else{ ?>
 										<input type="checkbox" name='<?= "main_pic[".$i."]" ?>'>
 <?php    } ?>
